@@ -13,6 +13,7 @@ parser.isValidType = type => TYPES.includes(type.toLowerCase());
 parser.isValidResources = res => res.reduce((acc, val) => parser.hasNoSpaces(val));
 parser.isValidOperation = op => parser.hasNoSpaces(op);
 parser.isValidStatus = status => status === undefined || STATUSES.includes(status.toLowerCase());
+parser.isValidStatusAndType = (status, type) => (!!status && type === 'event') || status === undefined;
 
 parser.validate = parsed => {
   let valid;
@@ -40,6 +41,9 @@ parser.validate = parsed => {
 
   valid = parser.isValidStatus(parsed.status);
   if (!valid) throw new Error(`${parsed.status} is not a valid value for status.`);
+
+  valid = parser.isValidStatusAndType(parsed.status, parsed.type);
+  if (!valid) throw new Error('Status can only be used when type is event.');
 
   return true;
 };

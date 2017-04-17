@@ -17,12 +17,12 @@ describe('Parser', () => {
     });
 
     it('parses a topic with status', () => {
-      const parsed = parser.parse('hitch.email.1.0.action.user.welcome.send.done');
+      const parsed = parser.parse('hitch.email.1.0.event.user.welcome.send.done');
       assert.equal(parsed.org, 'hitch');
       assert.equal(parsed.service, 'email');
       assert.equal(parsed.versions.major, '1');
       assert.equal(parsed.versions.minor, '0');
-      assert.equal(parsed.type, 'action');
+      assert.equal(parsed.type, 'event');
       assert.equal(parsed.resource, 'user.welcome');
       assert.equal(parsed.subresource, 'welcome');
       assert.equal(parsed.operation, 'send');
@@ -55,13 +55,13 @@ describe('Parser', () => {
           major: 1,
           minor: 0
         },
-        type: 'action',
+        type: 'event',
         resources: ['user', 'welcome'],
         operation: 'send',
         status: 'done'
       };
 
-      assert.equal(parser.stringify(parsed), 'hitch.email.1.0.action.user.welcome.send.done');
+      assert.equal(parser.stringify(parsed), 'hitch.email.1.0.event.user.welcome.send.done');
     });
   });
 });
