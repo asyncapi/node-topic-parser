@@ -2,7 +2,17 @@
 
 It uses the [AsyncAPI topic structure definition](https://github.com/asyncapi/topic-definition) to manipulate topics.
 
+## Installation
+
+```
+npm install --save asyncapi-topic-parser
+```
+
+## Documentation
+
 #### #parse
+
+It takes a topic in string format and generates an object which describes the topic.
 
 ```js
 const parser = require('asyncapi-topic-parser');
@@ -21,6 +31,8 @@ console.log(parser.parse('hitch.email.1.0.action.user.welcome.send'));
 //   status: undefined }
 ```
 #### #stringify
+
+It takes an object which describes the topic and generates a topic in string format.
 
 ```js
 const parser = require('asyncapi-topic-parser');
@@ -44,4 +56,4 @@ console.log(parser.stringify(parsed));
 
 ## Author/s
 
-<img src="https://avatars2.githubusercontent.com/u/242119?v=3&s=40" height="40" style="margin-right: 10px"/> Fran Mendez [<img src="https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/svgs/fi-social-twitter.svg" height="30" style="margin-left: 10px" />](https://www.twitter.com/fmvilas)
+Fran Mendez &nbsp;&nbsp;[<img src="https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/svgs/fi-social-twitter.svg" height="20" /> @fmvilas](https://www.twitter.com/fmvilas)
